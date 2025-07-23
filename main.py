@@ -2,10 +2,11 @@ from networksecurity.components.data_ingestion import DataIngestion
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
 import sys
-from networksecurity.entity.config_entity import DataIngestionConfig, TrainingPipelineConfig, DataValidationConfig, DataTransformationConfig
+from networksecurity.entity.config_entity import DataIngestionConfig, TrainingPipelineConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig
 
 from networksecurity.components.data_validation import DataValidation
 from networksecurity.components.data_transformation import DataTransformation
+from networksecurity.components.model_trainer import ModelTrainer
 
 
 '''testing of Data Ingestion Pipeline'''
@@ -34,6 +35,15 @@ if __name__ == "__main__":
         data_transformation_artifacts = data_transformation.initiate_data_transformation()
         logging.info("data transformation completed")
         print(data_transformation_artifacts)
+
+
+        model_trainer_config = ModelTrainerConfig(trainingpipelineconfig)
+        model_trainer = ModelTrainer(model_trainer_config, data_transformation_artifacts)  #the order of passing the argument must be same as in ModelTrainer
+        logging.info("Initiating model training")
+        model_trainer_artifacts = model_trainer.initiate_model_trainer()
+        logging.info("Model Training Completed")
+        #print(model_trainer_artifacts)   # path won't be printed in terminal so remove it
+
 
 
     except Exception as e:
