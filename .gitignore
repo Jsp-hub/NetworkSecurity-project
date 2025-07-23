@@ -1,3 +1,5 @@
 venv
 .env
 mongodb_credentials.txt
+Artifacts
+logs
