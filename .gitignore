@@ -4,3 +4,4 @@ mongodb_credentials.txt
 Artifacts
 logs
 mlruns
+prediction_output
