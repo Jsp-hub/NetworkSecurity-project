@@ -3,10 +3,14 @@ pandas
 numpy
 pymongo
 certifi
-pymongo[srv]==3.6
+#pymongo[srv]==3.6
 scikit-learn
-pymongo-4.13.2
-dill     #
-pyaml    #
+pymongo==4.13.2
+dill     
+pyaml    
+mlflow   
+dagshub 
+fastapi 
+uvicorn 
 
 ##-e . #refers to the setup.py file
